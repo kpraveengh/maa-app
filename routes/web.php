@@ -28,6 +28,19 @@ Route::get('admins/{admin}', ['uses' => 'AdminController@show', 'as' => 'admins.
 Route::get('admins/{admin}/edit', ['uses' => 'AdminController@edit', 'as' => 'admins.edit']);
 Route::put('admins/{admin}', ['uses' => 'AdminController@update', 'as' => 'admins.update']);
 Route::delete('admins/{admin}', ['uses' => 'AdminController@destroy', 'as' => 'admins.destroy']);
+/*Route::get('user/home', 'HomeController@index');
+Route::get('user/', ['uses' => 'AdminUserController@users', 'as' => 'user.allusers']);
+Route::get('user/allusers', ['uses' => 'AdminUserController@users', 'as' => 'user.allusers']);
+Route::get('user/owners', ['uses' => 'AdminUserController@owners', 'as' => 'user.index']);
+Route::get('user/create', ['uses' => 'AdminUserController@create', 'as' => 'user.create']);*/
+Route::post('adminuser', ['uses' => 'AdminUserController@store', 'as' => 'adminuser.store']);
+Route::get('adminuser/{user}', ['uses' => 'AdminUserController@show', 'as' => 'adminuser.show']);
+Route::get('adminuser/{user}/edit', ['uses' => 'AdminUserController@edit', 'as' => 'adminuser.edit']);
+Route::put('adminuser/{user}', ['uses' => 'AdminUserController@update', 'as' => 'adminuser.update']);
+Route::delete('adminuser/{user}', ['uses' => 'AdminUserController@destroy', 'as' => 'adminuser.destroy']);
+Route::auth();
+
+
 });
 Route::group(['middleware' => 'web'], function () {
 //User Login
@@ -45,7 +58,6 @@ Route::post('user/password/reset', 'UserAuth\ResetPasswordController@reset');
 Route::get('user/password/reset', 'UserAuth\ForgotPasswordController@showLinkRequestForm');
 Route::get('user/password/reset/{token}', 'UserAuth\ResetPasswordController@showResetForm');
 
-
 Route::get('user/home', 'HomeController@index');
 Route::get('user/', ['uses' => 'UserController@users', 'as' => 'user.allusers']);
 Route::get('user/allusers', ['uses' => 'UserController@users', 'as' => 'user.allusers']);
@@ -57,6 +69,5 @@ Route::get('user/{user}/edit', ['uses' => 'UserController@edit', 'as' => 'user.e
 Route::put('user/{user}', ['uses' => 'UserController@update', 'as' => 'user.update']);
 Route::delete('user/{user}', ['uses' => 'UserController@destroy', 'as' => 'user.destroy']);
 Route::auth();
-
 
 });

@@ -150,5 +150,18 @@ class AdminController extends Controller
 
          
     }
+     public function owners()
+    {
+        //
+         $users = User::all()->where('user_type', 'owner');
+
+          return View('admins.owners')
+        ->with('admins', Admin::all(),User::all()->where('user_type', 'owner'))
+        ->with('users', User::all()->where('user_type', 'owner'));
+
+       
+         
+    }
+
 
 }

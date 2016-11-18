@@ -13,8 +13,8 @@ class Product extends Model
     public $timestamps = true;
     protected $table = 'products';
 
-     public function admin()
+     public function user()
     {
-        return $this->belongsTo('App\Admin');
+        return $this->belongsTo('App\User');
     }
 }

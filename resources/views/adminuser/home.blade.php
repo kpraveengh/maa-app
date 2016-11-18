@@ -31,9 +31,6 @@
                         {{ Auth::user()->name }}
                     </div>
                     <div class="profile-usertitle-email">
-                        {{ Auth::user()->user_type }}
-                    </div>
-                    <div class="profile-usertitle-email">
                         {{ Auth::user()->email }}
                     </div>
                 </div>

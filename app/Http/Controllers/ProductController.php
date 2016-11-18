@@ -38,7 +38,7 @@ class ProductController extends Controller
     {
         //
        $users = User::all();
-          $admins = Admin::all();
+        $admins = Admin::all();
 
           return View('products.create')
         ->with('admins', Admin::all(),User::all())

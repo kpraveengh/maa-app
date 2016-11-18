@@ -1,5 +1,6 @@
-@extends('user.layout.auth')
+@extends('layouts.app')
 @section('content')
+
 
 <div class="container">
 
@@ -24,8 +25,8 @@
 				<!-- END SIDEBAR USER TITLE -->
 				<!-- SIDEBAR BUTTONS -->
 				<div class="profile-userbuttons">
-					<a class="btn btn-small btn-info" href="{{ URL::to('user/' . $users->id . '/edit') }}">Edit</a>
-        <a class="btn btn-small btn-info" href="{{ URL::to('user/home') }}">Home</a>
+					<a class="btn btn-small btn-info" href="{{ URL::to('adminuser/' . $users->id . '/edit') }}">Edit</a>
+        <a class="btn btn-small btn-info" href="{{ URL::to('admins/') }}">Back to Users</a>
 				</div>
 				<!-- END SIDEBAR BUTTONS -->
 				<!-- SIDEBAR MENU -->

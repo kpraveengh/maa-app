@@ -5,8 +5,9 @@ use Collective\Html\HtmlServiceProvider;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use App\Admin;
 use App\User;
 use App\Product;
@@ -15,13 +16,8 @@ use View;
 use Response;
 use Intervention\Image\Facades\Image as Image;
 
-class UserController extends Controller
+class AdminUserController extends Controller
 {
-
- public function __construct()
-    {
-        $this->middleware('user');
-    }
 
     /**
      *
@@ -32,18 +28,18 @@ class UserController extends Controller
 
     public function owners()
     {
-       /* $users = User::all()->where('user_type', 'owner');
+        $users = User::all()->where('user_type', 'owner');
         return View('user.index')
-        ->with('users', $users  );*/         
+        ->with('users', $users  );         
     }
 
    /* All End Users*/
 
     public function users()
     {
-        /*$users = User::all();
+        $users = User::all();
          return View('user.allusers', compact('users'))
-        ->with('users', $users  );*/
+        ->with('users', $users  );
 
      /* return Response::json(array(
         'error' => false,
@@ -78,7 +74,7 @@ class UserController extends Controller
             $users->image = Input::get('image');
             $users->save();
 
-                return redirect('user/');           
+                return redirect('admins/');           
     }
 
     /**
@@ -91,7 +87,7 @@ class UserController extends Controller
     {
         //
           $users= User::find($id);
-            return View::make('user.show')
+            return View::make('adminuser.show')
             ->with('users', $users);
            
 
@@ -109,7 +105,7 @@ class UserController extends Controller
     {
         //
         $users = User::find($id);
-        return View::make('user.edit')
+        return View::make('adminuser.edit')
             ->with('users', $users);
     
     }
@@ -140,7 +136,7 @@ class UserController extends Controller
 
             $users->save();
 
-                return redirect('user/home');         
+                return redirect('admins/');         
   
           /* return Response::json(array(
                 'error' => false,
@@ -162,7 +158,7 @@ class UserController extends Controller
         $users->delete();
 
         // redirect
-       return redirect('user');
+       return redirect('adminuser');
     }
 
 
