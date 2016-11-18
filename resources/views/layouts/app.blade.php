@@ -58,7 +58,7 @@
                              <li><a href="{{ url('user/login') }}">User Login</a></li>
                             <!-- <li><a href="{{ url('/register') }}">Register</a></li> -->
                         @else
-                        <li><a href="{{ url('/user/owners') }}"> Restaurant Owners</a></li>
+                        <li><a href="{{ url('/admins/owners') }}"> Restaurant Owners</a></li>
                         <li><a href="{{ url('/admins/endusers') }}"> End Users</a></li>
                         <li><a href="{{ url('admins/adminusers') }}"> Admin Users</a></li>
                             <li class="dropdown">

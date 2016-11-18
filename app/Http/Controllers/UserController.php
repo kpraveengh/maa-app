@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Collective\Html\HtmlServiceProvider;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
@@ -14,9 +13,16 @@ use App\Product;
 use Html;
 use View;
 use Response;
+use Intervention\Image\Facades\Image as Image;
 
 class UserController extends Controller
 {
+
+ public function __construct()
+    {
+        $this->middleware('user');
+    }
+
     /**
      *
      * @return \Illuminate\Http\Response
@@ -43,9 +49,7 @@ class UserController extends Controller
         'error' => false,
         'users' => $users->toArray()),
         200
-    );    */   
-
-
+    );    */  
     }
 
     /**
@@ -71,6 +75,7 @@ class UserController extends Controller
             $users->name       = Input::get('name');
             $users->email      = Input::get('email');
             $users->password   = Hash::make(Input::get('password'));
+            $users->image = Input::get('image');
             $users->save();
 
                 return redirect('user/');           
@@ -122,10 +127,20 @@ class UserController extends Controller
             $users           = User::find($id);
             $users->name     = Input::get('name');
             $users->email    = Input::get('email');
-            $users->password  = Input::get('password');
+            $username = str_replace(' ', '', $users->name);
+
+             if ($request->hasFile('image')) {
+                    $file=$request->file('image');
+                    $filename = $username.$users->id. '.' .$file->getClientOriginalExtension();
+                    $location = public_path('uploads/images/'.$filename);
+                    Image::make($file)->resize(120,120)->save($location);
+                    $users->image=$filename;
+                    # code...
+                }              
+
             $users->save();
 
-                return redirect('user/create');         
+                return redirect('user/home');         
   
           /* return Response::json(array(
                 'error' => false,
@@ -149,5 +164,6 @@ class UserController extends Controller
         // redirect
        return redirect('user');
     }
-    
+
+
 }

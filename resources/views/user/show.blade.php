@@ -4,7 +4,7 @@
 
 <div class="container">
 
-<h1> {{ $users->name }} Profile</h1>
+<h1> {{ $users->name }} Details</h1>
     <div class="row profile">
 		<div class="col-md-3">
 			<div class="profile-sidebar">

@@ -118,7 +118,6 @@ class AdminController extends Controller
             $admins->name     = Input::get('name');
             $admins->email    = Input::get('email');
             $admins->save();
-
             return redirect('admins/create');
 
     }
@@ -151,4 +150,5 @@ class AdminController extends Controller
 
          
     }
+
 }

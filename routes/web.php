@@ -11,9 +11,6 @@
 |
 */
 
-
-
-
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
@@ -24,21 +21,15 @@ Route::get('/', function () {
 Route::get('admins/adminusers', 'AdminController@getadmins');
 Route::get('admins/', ['uses' => 'AdminController@index', 'as' => 'admins.index']);
 Route::get('admins/endusers', ['uses' => 'AdminController@index', 'as' => 'admins.index']);
+Route::get('admins/owners', ['uses' => 'AdminController@owners', 'as' => 'admins.owners']);
 Route::get('admins/create', ['uses' => 'AdminController@create', 'as' => 'admins.create']);
 Route::post('admins', ['uses' => 'AdminController@store', 'as' => 'admins.store']);
 Route::get('admins/{admin}', ['uses' => 'AdminController@show', 'as' => 'admins.show']);
 Route::get('admins/{admin}/edit', ['uses' => 'AdminController@edit', 'as' => 'admins.edit']);
 Route::put('admins/{admin}', ['uses' => 'AdminController@update', 'as' => 'admins.update']);
 Route::delete('admins/{admin}', ['uses' => 'AdminController@destroy', 'as' => 'admins.destroy']);
-
 });
-
-
-
-
 Route::group(['middleware' => 'web'], function () {
-
-
 //User Login
 Route::get('user/login', 'UserAuth\LoginController@showLoginForm');
 Route::post('user/login', 'UserAuth\LoginController@login');

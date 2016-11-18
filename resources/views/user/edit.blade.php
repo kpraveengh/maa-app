@@ -4,7 +4,7 @@
 
 <legend>{{ $users->name }} Profile</legend>
 
-{{ Form::model($users, array('route' => array('user.update', $users->id), 'method' => 'PUT','class'=>'form-horizontal')) }}
+{{ Form::model($users, array('route' => array('user.update', $users->id), 'method' => 'PUT','class'=>'form-horizontal','files'=>true)) }}
 
 <fieldset>
 
@@ -24,6 +24,12 @@
   <input id="email" name="email" type="text" value="{{ $users->email }}" class="form-control input-md" required="">
     
   </div>
+</div>
+<div class="form-group">
+    <label class="col-md-4 control-label" for="file">Profile Image</label>  
+  <div class="col-md-4">
+     <input type="file" name="image" placeholder="Add Profile Picture">
+    </div>
 </div>
 
 <div class="form-group">

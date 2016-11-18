@@ -8,7 +8,7 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>General User</legend>
+<legend>New Admin</legend>
 
 <!-- Text input-->
 <div class="form-group">
@@ -18,7 +18,7 @@
     
   </div>
 </div>
-
+<br>
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="email">Email</label>  
@@ -27,14 +27,7 @@
     
   </div>
 </div>
-<!-- Date input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="dob">Date of Birth</label>  
-  <div class="col-md-4">
-  <input id="dob" name="dob" type="date" class="form-control input-md" required="">
-    
-  </div>
-</div>
+<br>
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="phone">Mobile No</label>  
@@ -43,6 +36,7 @@
     
   </div>
 </div>
+<br>
 <!-- Password input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="phone">Password</label>  
@@ -51,7 +45,7 @@
     
   </div>
 </div>
-
+<br>
 <!-- Select Basic -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="user_type">User Type</label>
@@ -62,6 +56,7 @@
     </select>
   </div>
 </div>
+<br>
 <div class="form-group">
   <label class="col-md-4 control-label" for="submit"></label>
   <div class="col-md-4">
