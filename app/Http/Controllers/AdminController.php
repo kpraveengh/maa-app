@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use Collective\Html\HtmlServiceProvider;
@@ -15,6 +16,8 @@ use View;
 
 class AdminController extends Controller
 {
+    
+    
     /**
      * Display a listing of the resource.
      *
@@ -59,6 +62,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+       
         //
             $admins             = new Admin;
             $admins->name       = Input::get('name');
@@ -66,7 +70,7 @@ class AdminController extends Controller
             $admins->password   = Hash::make(Input::get('password'));
             $admins->save();
 
-                return redirect('admins/adminusers');
+          //      return redirect('admins/adminusers');
            
     }
 
@@ -118,7 +122,7 @@ class AdminController extends Controller
             $admins->name     = Input::get('name');
             $admins->email    = Input::get('email');
             $admins->save();
-            return redirect('admins/create');
+            return redirect('admins/adminusers');
 
     }
 
@@ -133,12 +137,13 @@ class AdminController extends Controller
         // delete
         $admins = Admin::find($id);
         $admins->delete();
+        return redirect('admins');
 
         $users = User::find($id);
         $users->delete();
 
         // redirect
-       return redirect('admins');
+       return redirect('admins/adminusers');
     }
        public function getadmins()
     {

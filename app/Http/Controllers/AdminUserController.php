@@ -136,7 +136,7 @@ class AdminUserController extends Controller
 
             $users->save();
 
-                return redirect('admins/');         
+                return redirect('admins/adminusers');         
   
           /* return Response::json(array(
                 'error' => false,
@@ -158,7 +158,7 @@ class AdminUserController extends Controller
         $users->delete();
 
         // redirect
-       return redirect('adminuser');
+       return redirect('admins/adminusers');
     }
 
 

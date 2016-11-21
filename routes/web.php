@@ -28,11 +28,8 @@ Route::get('admins/{admin}', ['uses' => 'AdminController@show', 'as' => 'admins.
 Route::get('admins/{admin}/edit', ['uses' => 'AdminController@edit', 'as' => 'admins.edit']);
 Route::put('admins/{admin}', ['uses' => 'AdminController@update', 'as' => 'admins.update']);
 Route::delete('admins/{admin}', ['uses' => 'AdminController@destroy', 'as' => 'admins.destroy']);
-/*Route::get('user/home', 'HomeController@index');
-Route::get('user/', ['uses' => 'AdminUserController@users', 'as' => 'user.allusers']);
-Route::get('user/allusers', ['uses' => 'AdminUserController@users', 'as' => 'user.allusers']);
-Route::get('user/owners', ['uses' => 'AdminUserController@owners', 'as' => 'user.index']);
-Route::get('user/create', ['uses' => 'AdminUserController@create', 'as' => 'user.create']);*/
+
+//Admin User
 Route::post('adminuser', ['uses' => 'AdminUserController@store', 'as' => 'adminuser.store']);
 Route::get('adminuser/{user}', ['uses' => 'AdminUserController@show', 'as' => 'adminuser.show']);
 Route::get('adminuser/{user}/edit', ['uses' => 'AdminUserController@edit', 'as' => 'adminuser.edit']);
@@ -40,9 +37,9 @@ Route::put('adminuser/{user}', ['uses' => 'AdminUserController@update', 'as' => 
 Route::delete('adminuser/{user}', ['uses' => 'AdminUserController@destroy', 'as' => 'adminuser.destroy']);
 Route::auth();
 
-
 });
-Route::group(['middleware' => 'web'], function () {
+
+Route::group(['middleware' => ['web']], function () {
 //User Login
 Route::get('user/login', 'UserAuth\LoginController@showLoginForm');
 Route::post('user/login', 'UserAuth\LoginController@login');
@@ -64,10 +61,16 @@ Route::get('user/allusers', ['uses' => 'UserController@users', 'as' => 'user.all
 Route::get('user/owners', ['uses' => 'UserController@owners', 'as' => 'user.index']);
 Route::get('user/create', ['uses' => 'UserController@create', 'as' => 'user.create']);
 Route::post('user', ['uses' => 'UserController@store', 'as' => 'user.store']);
-Route::get('user/{user}', ['uses' => 'UserController@show', 'as' => 'user.show']);
+//Route::get('user/{user}', ['uses' => 'UserController@show', 'as' => 'user.show']);
 Route::get('user/{user}/edit', ['uses' => 'UserController@edit', 'as' => 'user.edit']);
 Route::put('user/{user}', ['uses' => 'UserController@update', 'as' => 'user.update']);
 Route::delete('user/{user}', ['uses' => 'UserController@destroy', 'as' => 'user.destroy']);
+
+
+
+Route::get('user/createmember', ['uses' => 'UserController@createmember', 'as' => 'user.createmember']);
+Route::post('user', ['uses' => 'UserController@storemember', 'as' => 'user.storemember']);
+
 Route::auth();
 
 });

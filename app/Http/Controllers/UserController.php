@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Admin;
 use App\User;
 use App\Product;
+use App\Member;
 use Html;
 use View;
 use Response;
@@ -20,7 +21,7 @@ class UserController extends Controller
 
  public function __construct()
     {
-        $this->middleware('user');
+        $this->middleware('auth');
     }
 
     /**
@@ -160,10 +161,35 @@ class UserController extends Controller
         // delete
         $users = User::find($id);
         $users->delete();
-
         // redirect
        return redirect('user');
     }
+    
+    //User Memebers Creating
+    public function createmember()
+    {
+        return View::make('user.createmember');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storemember(Request $request)
+    {
+        //
+            $user = Auth::user();
+           $members             = new Member;
+           $members->name       = Input::get('name');
+           $members->user_id = $user->id;
+           $members->save();
+               return redirect('user/'); 
+           
+    }
+    
+    
 
 
 }

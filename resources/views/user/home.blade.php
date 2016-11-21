@@ -60,7 +60,7 @@
                   <div class="panel-body">
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab1primary">
-                            <a href="" class="btn btn-primary"> Add Member</a>
+                            <a href="{{ URL::to('user/createmember') }}" class="btn btn-primary"> Add Member</a>
                         </div>
                         <div class="tab-pane fade" id="tab2primary">
                             
